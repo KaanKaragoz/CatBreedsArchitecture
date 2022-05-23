@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_baseline_accessibility_new_24.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.15" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17798913043478262" />

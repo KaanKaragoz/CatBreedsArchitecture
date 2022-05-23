@@ -31,7 +31,6 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
         viewModelScope.launch {
             Log.d("response", "coroutine")
             val breedsItems = repository.getDefaultBreeds()
-           // val breedsItems = repository.getBreeds("aege","ae76962b-bfd9-406a-8d88-1a3965c41ad9")
             Log.d("response", "--")
             Log.d("response", breedsItems.toString())
 
