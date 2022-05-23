@@ -55,13 +55,13 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    fun setupOnClickListeners(){
+    private fun setupOnClickListeners(){
         binding.button.setOnClickListener {
 
         }
     }
 
-    fun initializeAdapter() {
+    private fun initializeAdapter() {
         breedsAdapter = BreedsFeedAdapter()
         binding.breedsFeed.apply {
             layoutManager = LinearLayoutManager(context)
