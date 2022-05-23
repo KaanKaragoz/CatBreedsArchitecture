@@ -7,6 +7,6 @@ import javax.inject.Singleton
 
 
 interface BreedsRepository {
-    //fun getBreeds(searchText : String,id : String) = retrofitService.getBreeds(searchText,id)
+    suspend fun getBreeds(searchText : String,id : String)  : List<Breed>
     suspend fun getDefaultBreeds() : List<Breed>
 }

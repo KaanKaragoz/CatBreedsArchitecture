@@ -16,6 +16,7 @@ class BreedsRemoteDataSource @Inject constructor(
     private val breedsApi: ApiService
         ) {
     suspend fun getDefaultBreeds(): List<Breed> = breedsApi.getDefaultBreeds()
+    suspend fun getBreeds(searchText : String, apiKey : String): List<Breed> = breedsApi.getBreeds(searchText,apiKey)
     }
 
 

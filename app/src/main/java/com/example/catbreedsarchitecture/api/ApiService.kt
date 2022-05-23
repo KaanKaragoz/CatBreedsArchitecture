@@ -9,8 +9,8 @@ interface ApiService {
     @GET("breeds/search")
    suspend fun getBreeds(
         @Query("q") searchText : String,
-        @Query("api_key") id : String
-    ): Call<List<Breed>>
+        @Query("api_key") apiKey : String
+    ): List<Breed>
 
     @GET("breeds/")
    suspend fun getDefaultBreeds(

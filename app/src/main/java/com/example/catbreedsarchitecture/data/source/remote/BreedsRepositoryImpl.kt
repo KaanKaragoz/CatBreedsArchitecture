@@ -5,8 +5,7 @@ import javax.inject.Inject
 
     class BreedsRepositoryImpl @Inject constructor (private val breedsRemoteDataSource: BreedsRemoteDataSource) : BreedsRepository {
 
-    //fun getBreeds(searchText : String,id : String) = retrofitService.getBreeds(searchText,id)
-    // fun getDefaultBreeds() = retrofitService.getDefaultBreeds()
+    override suspend fun getBreeds(searchText : String,apiKey : String) = breedsRemoteDataSource.getBreeds(searchText,apiKey)
     override suspend fun getDefaultBreeds() = breedsRemoteDataSource.getDefaultBreeds()
 
 
