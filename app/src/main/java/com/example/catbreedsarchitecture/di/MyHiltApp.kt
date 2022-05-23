@@ -1,4 +1,4 @@
-package com.example.catbreedsarchitecture
+package com.example.catbreedsarchitecture.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
