@@ -1,8 +1,6 @@
-package com.example.catbreedsarchitecture.api
+package com.example.catbreedsarchitecture.di
 
-import com.example.catbreedsarchitecture.data.source.remote.BreedsRepository
-import com.example.catbreedsarchitecture.data.source.remote.BreedsRepositoryImpl
-import dagger.Binds
+import com.example.catbreedsarchitecture.api.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

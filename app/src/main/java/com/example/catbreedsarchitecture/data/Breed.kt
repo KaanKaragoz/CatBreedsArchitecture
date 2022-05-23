@@ -8,11 +8,11 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "liked_cats_table")
+//@Entity(tableName = "liked_cats_table")
 data class Breed(
     @ColumnInfo(name = "name")
     @SerializedName("name")
-    val name : String? = "",
+    val name : String?,
     @ColumnInfo(name = "image")
     @SerializedName("image")
     val image : Items,
