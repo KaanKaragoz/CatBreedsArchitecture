@@ -22,8 +22,6 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
     private val _breeds = MutableLiveData<List<Breed>>()
     val breeds: LiveData<List<Breed>> get() = _breeds
     val errorMessage = MutableLiveData<String>()
-   // private val breedsRemoteDataSource: BreedsRemoteDataSource = BreedsRemoteDataSource.create()
-   // private var repository: BreedsRepositoryImpl = BreedsRepositoryImpl(breedsRemoteDataSource)
 
 
 
@@ -36,17 +34,7 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
             Log.d("response", "--")
             Log.d("response", response.toString())
 
-            /*
-            response.enqueue(object : Callback<List<Breed>> {
-                override fun onResponse(call: Call<List<Breed>>, response: Response<List<Breed>>) {
-                    Log.d("response", response.body().toString())
-                }
 
-                override fun onFailure(call: Call<List<Breed>>, t: Throwable) {
-                    errorMessage.postValue(t.message)
-                }
-            })
-*/
         }
 
     }

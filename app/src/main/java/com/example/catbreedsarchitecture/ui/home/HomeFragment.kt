@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import com.example.catbreedsarchitecture.R
+import com.example.catbreedsarchitecture.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     lateinit var viewModel : HomeViewModel
+    private  var  _binding : FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +26,8 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
-        // Inflate the layout for this fragment
+        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        return binding.root
 
 
     }
@@ -34,8 +37,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        setupOnClickListeners()
 
-        view.findViewById<Button>(R.id.button).setOnClickListener {
+    }
+
+    fun setupOnClickListeners(){
+        binding.button.setOnClickListener {
             viewModel.handleBreeds()
         }
 
