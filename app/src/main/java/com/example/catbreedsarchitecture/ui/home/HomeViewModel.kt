@@ -27,7 +27,6 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
     val breeds : StateFlow<HomeUiState> = _breeds.asStateFlow()
 
     fun handleBreeds() {
-
         viewModelScope.launch {
             Log.d("response", "coroutine")
             val breedsItems = repository.getDefaultBreeds()
@@ -40,7 +39,6 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
         }
     }
 }
-
 
 
 data class HomeUiState(

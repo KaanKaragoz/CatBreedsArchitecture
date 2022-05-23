@@ -24,13 +24,6 @@ class HomeFragment : Fragment() {
     lateinit var breedsAdapter : BreedsFeedAdapter
     private  var  _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private var breedsItems : List<Breed> = listOf()
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,43 +31,35 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
-
-
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        breedsAdapter = BreedsFeedAdapter()
-        binding.breedsFeed.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = breedsAdapter
-        }
-
+        initializeAdapter()
+        setupOnClickListeners()
         viewModel.handleBreeds()
 
         lifecycleScope.launch(Dispatchers.IO) {
             viewModel.breeds.collect{
-                breedsItems = it.breedsItems
-                Log.d("home",breedsItems.toString())
-
-                breedsAdapter.submitList(breedsItems)
-
+                Log.d("home",it.breedsItems.toString())
+                breedsAdapter.submitList(it.breedsItems)
             }
         }
-        setupOnClickListeners()
-
     }
 
     fun setupOnClickListeners(){
         binding.button.setOnClickListener {
 
         }
-
     }
 
-
+    fun initializeAdapter() {
+        breedsAdapter = BreedsFeedAdapter()
+        binding.breedsFeed.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = breedsAdapter
+        }
+    }
 
 }
