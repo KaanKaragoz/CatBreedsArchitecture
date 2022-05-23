@@ -30,11 +30,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding.lifecycleOwner = this.viewLifecycleOwner // viewLifecycleOwner =? getViewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         initializeAdapter()
         setupOnClickListeners()
@@ -46,6 +48,11 @@ class HomeFragment : Fragment() {
                 breedsAdapter.submitList(it.breedsItems)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     fun setupOnClickListeners(){
