@@ -12,4 +12,7 @@ interface BreedsDao {
     suspend fun addCat(cat: Breed)
     @Query("SELECT * FROM liked_cats_table ORDER BY catId")
     suspend fun readAllData(): List<Breed>
+
+    @Query("DELETE FROM liked_cats_table WHERE name =:name ")
+    suspend fun deleteCat(name : String)
 }

@@ -1,12 +1,16 @@
 package com.example.catbreedsarchitecture.ui.home
 
 import android.util.Log
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.catbreedsarchitecture.data.Breed
 import com.example.catbreedsarchitecture.data.Items
 import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
 import com.example.catbreedsarchitecture.data.source.remote.BreedsRepository
+import com.example.catbreedsarchitecture.util.downloadFromUrl
+import com.example.catbreedsarchitecture.util.placeholderProgressBar
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -25,10 +29,10 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
 
     fun handleBreeds() {
         viewModelScope.launch {
-            Log.d("response", "coroutine")
+            Log.d("retrofit", "coroutine")
             val breedsItems = repository.getDefaultBreeds()
-            Log.d("response", "--")
-            Log.d("response", breedsItems.toString())
+            Log.d("retrofit", "--")
+            Log.d("retrofit", breedsItems.toString())
 
             _breeds.update {
                 it.copy(breedsItems = breedsItems)
@@ -43,6 +47,12 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
             Log.d("room",localRepository.readAllData().toString())
         }
     }
+
+    /*
+    @BindingAdapter("android:downloadUrl") // databinding de bu fonksiyon çağırılacak
+    suspend fun handleLike(cat : Breed){
+        localRepository.addCat(cat)
+    } */
 }
 
 

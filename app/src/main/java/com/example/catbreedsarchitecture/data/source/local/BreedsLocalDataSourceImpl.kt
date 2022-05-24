@@ -14,4 +14,8 @@ class BreedsLocalDataSourceImpl @Inject constructor(private val breedsDao : Bree
         return breedsDao.addCat(cat)
     }
 
+    override suspend fun deleteCat(catName: String) {
+        return breedsDao.deleteCat(catName)
+    }
+
 }

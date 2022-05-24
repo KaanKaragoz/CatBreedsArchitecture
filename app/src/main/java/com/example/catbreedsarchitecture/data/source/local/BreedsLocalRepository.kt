@@ -5,4 +5,5 @@ import com.example.catbreedsarchitecture.data.Breed
 interface BreedsLocalRepository {
     suspend fun readAllData()  : List<Breed>
     suspend fun addCat(breed : Breed)
+    suspend fun deleteCat(cat : String)
 }

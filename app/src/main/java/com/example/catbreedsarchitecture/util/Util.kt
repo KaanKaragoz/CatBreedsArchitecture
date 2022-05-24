@@ -35,7 +35,7 @@ fun placeholderProgressBar(context:Context) : CircularProgressDrawable {
 fun downloadImage(view:ImageView,url:String?){
     //Picasso.get().load(url).into(view)
     view.downloadFromUrl(url, placeholderProgressBar(view.context))
-
 }
+
 
 
