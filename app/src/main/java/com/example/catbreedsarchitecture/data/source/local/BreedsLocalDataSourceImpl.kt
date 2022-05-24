@@ -1,7 +1,5 @@
 package com.example.catbreedsarchitecture.data.source.local
 
-import com.example.catbreeds.room.BreedsDao
-import com.example.catbreedsarchitecture.api.ApiService
 import com.example.catbreedsarchitecture.data.Breed
 import javax.inject.Inject
 

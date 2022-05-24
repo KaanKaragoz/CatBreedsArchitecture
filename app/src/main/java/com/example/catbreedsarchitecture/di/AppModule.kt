@@ -2,8 +2,8 @@ package com.example.catbreedsarchitecture.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.catbreeds.room.BreedsDao
-import com.example.catbreeds.room.LikedCatsDatabase
+import com.example.catbreedsarchitecture.data.source.local.BreedsDao
+import com.example.catbreedsarchitecture.data.source.local.LikedCatsDatabase
 import com.example.catbreedsarchitecture.api.ApiService
 import com.example.catbreedsarchitecture.data.source.local.BreedsLocalDataSource
 import com.example.catbreedsarchitecture.data.source.local.BreedsLocalDataSourceImpl
