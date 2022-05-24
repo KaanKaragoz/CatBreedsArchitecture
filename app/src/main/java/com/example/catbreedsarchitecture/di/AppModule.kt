@@ -1,6 +1,8 @@
 package com.example.catbreedsarchitecture.di
 
 import com.example.catbreedsarchitecture.api.ApiService
+import com.example.catbreedsarchitecture.data.source.remote.BreedsRemoteDataSourceImpl
+import com.example.catbreedsarchitecture.data.source.remote.BreedsRemoteDataSourcee
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +22,11 @@ object AppModule {
     fun getRetrofitService(retrofit: Retrofit) : ApiService {
         return retrofit.create(ApiService::class.java)
 
+    }
+    @Singleton
+    @Provides
+    fun getDataSource(apiService : ApiService) : BreedsRemoteDataSourcee {
+        return BreedsRemoteDataSourceImpl(apiService)
     }
 
     @Singleton
