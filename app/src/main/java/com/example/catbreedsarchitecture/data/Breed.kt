@@ -6,34 +6,44 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.IgnoredOnParcel
 
 @Parcelize
-//@Entity(tableName = "liked_cats_table")
+@Entity(tableName = "liked_cats_table")
 data class Breed(
     @ColumnInfo(name = "name")
     @SerializedName("name")
     val name : String?,
+
     @ColumnInfo(name = "image")
     @SerializedName("image")
     val image : Items,
+
     @ColumnInfo(name = "description")
     @SerializedName("description")
-    val description : String? ="",
+    val description : String? ,
+
     @ColumnInfo(name = "origin")
     @SerializedName("origin")
-    val origin : String? ="",
+    val origin : String? ,
+
     @ColumnInfo(name = "wikipedia_url")
     @SerializedName("wikipedia_url")
-    val wikipediaUrl : String? ="",
+    val wikipediaUrl : String? ,
+
     @ColumnInfo(name = "life_span")
     @SerializedName("life_span")
-    val lifeSpan : String? = "",
+    val lifeSpan : String? ,
+
     @ColumnInfo(name = "dog_friendly")
     @SerializedName("dog_friendly")
     val dogFriendly : Int? = Int.MIN_VALUE,
+
     @ColumnInfo(name = "isLiked")
     var IsCatliked: Boolean?,
+
 ) : Parcelable {
+    @IgnoredOnParcel
     @PrimaryKey(autoGenerate = true)
     var catId : Int = 0
 }

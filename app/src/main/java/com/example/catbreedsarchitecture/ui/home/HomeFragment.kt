@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
 
     private fun setupOnClickListeners(){
         binding.button.setOnClickListener {
-
+            viewModel.tryRoom()
         }
     }
 

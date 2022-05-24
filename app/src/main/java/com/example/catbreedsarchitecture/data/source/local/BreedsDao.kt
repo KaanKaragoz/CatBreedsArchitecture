@@ -1,0 +1,15 @@
+package com.example.catbreeds.room
+
+import androidx.lifecycle.LiveData
+import androidx.room.*
+import com.example.catbreeds.model.TypeConverter
+import com.example.catbreedsarchitecture.data.Breed
+
+@Dao
+@TypeConverters(TypeConverter::class)
+interface BreedsDao {
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addCat(cat: Breed)
+    @Query("SELECT * FROM liked_cats_table ORDER BY catId")
+    suspend fun readAllData(): List<Breed>
+}

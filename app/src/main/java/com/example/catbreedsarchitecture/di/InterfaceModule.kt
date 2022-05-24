@@ -1,5 +1,7 @@
 package com.example.catbreedsarchitecture.api
 
+import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
+import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepositoryImpl
 import com.example.catbreedsarchitecture.data.source.remote.BreedsRepository
 import com.example.catbreedsarchitecture.data.source.remote.BreedsRepositoryImpl
 import dagger.Binds
@@ -12,4 +14,6 @@ import dagger.hilt.components.SingletonComponent
 interface RepositoryModules {
     @Binds
     fun provideMainRepositoryImpl(repository: BreedsRepositoryImpl): BreedsRepository
+    @Binds
+    fun provideLocalRepositoryImpl(localRepository: BreedsLocalRepositoryImpl) : BreedsLocalRepository
 }

@@ -6,8 +6,9 @@ import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
 import com.squareup.picasso.Picasso
-
+import javax.inject.Inject
 
 
 /* G L I D E */
@@ -35,5 +36,6 @@ fun downloadImage(view:ImageView,url:String?){
     //Picasso.get().load(url).into(view)
     view.downloadFromUrl(url, placeholderProgressBar(view.context))
 
-
 }
+
+
