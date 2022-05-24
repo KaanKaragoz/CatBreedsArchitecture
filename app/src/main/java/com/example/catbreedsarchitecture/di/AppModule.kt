@@ -7,6 +7,7 @@ import com.example.catbreeds.room.LikedCatsDatabase
 import com.example.catbreedsarchitecture.api.ApiService
 import com.example.catbreedsarchitecture.data.source.local.BreedsLocalDataSource
 import com.example.catbreedsarchitecture.data.source.local.BreedsLocalDataSourceImpl
+import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
 import com.example.catbreedsarchitecture.data.source.remote.BreedsRemoteDataSourceImpl
 import com.example.catbreedsarchitecture.data.source.remote.BreedsRemoteDataSource
 import dagger.Module
@@ -32,8 +33,8 @@ object AppModule {
     }
     @Singleton
     @Provides
-    fun getDataSource(apiService : ApiService) : BreedsRemoteDataSource {
-        return BreedsRemoteDataSourceImpl(apiService)
+    fun getDataSource(apiService : ApiService,breedsLocalRepository: BreedsLocalRepository) : BreedsRemoteDataSource {
+        return BreedsRemoteDataSourceImpl(apiService,breedsLocalRepository)
     }
 
     @Singleton

@@ -19,4 +19,6 @@ interface RepositoryModules {
     @Binds
     fun provideLocalRepositoryImpl(localRepository: BreedsLocalRepositoryImpl) : BreedsLocalRepository
 
+
+
 }

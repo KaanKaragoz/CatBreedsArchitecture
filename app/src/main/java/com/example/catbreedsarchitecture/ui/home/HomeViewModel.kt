@@ -22,10 +22,19 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: BreedsRepository, private val localRepository: BreedsLocalRepository) : ViewModel() {
 
-    private val _breeds = MutableStateFlow(HomeUiState())
+    private val _breeds = MutableStateFlow(HomeUiState(onFavouriteChanged = {id,isFavourited ->
+        Log.d("home",id+" - "+isFavourited.toString())
+        val j : Items = Items("url")
+        val k : Breed = Breed(id,j,"asdasd","asd","asdas","asdas",4,true)
+
+        viewModelScope.launch {
+            localRepository.addCat(k)
+            Log.d("room",localRepository.readAllData().toString())
+            handleBreeds()
+
+        }
+    }))
     val breeds : StateFlow<HomeUiState> = _breeds.asStateFlow()
-    val j : Items = Items("url")
-    val k : Breed = Breed("kedi2",j,"asdasd","asd","asdas","asdas",4,true)
 
     fun handleBreeds() {
         viewModelScope.launch {
@@ -37,27 +46,25 @@ class HomeViewModel @Inject constructor(private val repository: BreedsRepository
             _breeds.update {
                 it.copy(breedsItems = breedsItems)
 
+
             }
         }
     }
 
     fun tryRoom() {
         viewModelScope.launch {
-            localRepository.addCat(k)
+            //localRepository.addCat(k)
             Log.d("room",localRepository.readAllData().toString())
         }
     }
 
-    /*
-    @BindingAdapter("android:downloadUrl") // databinding de bu fonksiyon çağırılacak
-    suspend fun handleLike(cat : Breed){
-        localRepository.addCat(cat)
-    } */
 }
 
 
 data class HomeUiState(
-    val breedsItems : List<Breed> = listOf()
+    val breedsItems : List<Breed> = listOf(),
+    val onFavouriteChanged : (String?, Boolean?) -> Unit
+
     ) {
 
 }

@@ -17,7 +17,7 @@ import com.example.catbreedsarchitecture.data.Breed
 import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
 import com.example.catbreedsarchitecture.databinding.BreedsItemsBinding
 
-class BreedsFeedAdapter : ListAdapter<Breed, BreedsFeedAdapter.BreedsFeedViewHolder>(BreedsFeedDiffCallback()),BreedsClickListener  {
+class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) : ListAdapter<Breed, BreedsFeedAdapter.BreedsFeedViewHolder>(BreedsFeedDiffCallback())  {
     class BreedsFeedViewHolder(var view: BreedsItemsBinding) : RecyclerView.ViewHolder(view.root) {
 
     }
@@ -29,29 +29,49 @@ class BreedsFeedAdapter : ListAdapter<Breed, BreedsFeedAdapter.BreedsFeedViewHol
     }
 
     override fun onBindViewHolder(holder: BreedsFeedViewHolder, position: Int) {
-        holder.view.breed = getItem(position)
-        holder.view.listener = this
+        val item = getItem(position)
+        holder.view.breed = item
+        Log.d("adapter",item.toString())
+        if (item.IsCatliked == true) {
+            holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
+            holder.view.executePendingBindings()
+        }
+        else {
+            holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
+        }
+        holder.view.btnLike.setOnClickListener {
+            onFavouriteChanged(item.name, item.IsCatliked)
+/*
+            if (item.IsCatliked == true) {
+                holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
+                holder.view.executePendingBindings()
+            } else {
+                holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
+            }
+            */
+
+            holder.view.executePendingBindings()
+        }
 
     }
 
     class BreedsFeedDiffCallback : DiffUtil.ItemCallback<Breed>() {
         override fun areItemsTheSame(oldItem: Breed, newItem: Breed): Boolean {
-            return oldItem.name == newItem.name
+            Log.d("aaaaa","callback")
+            return oldItem.name == newItem.name && oldItem.IsCatliked == newItem.IsCatliked
+
 
 
         }
 
         override fun areContentsTheSame(oldItem: Breed, newItem: Breed): Boolean {
+            Log.d("aaaaa","are contents the same")
             return areItemsTheSame(oldItem, newItem)
         }
 
     }
 
-    override fun onItemClick(v: View) {
-        Log.d("a","oldu")
-        v.findViewById<ImageView>(R.id.btnLike).setBackgroundResource(R.drawable.ic_baseline_favorite_24)
-        Log.d("a","oldu")
-    }
+
 
 
 }
