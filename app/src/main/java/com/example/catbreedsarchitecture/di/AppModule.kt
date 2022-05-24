@@ -34,7 +34,7 @@ object AppModule {
     @Singleton
     @Provides
     fun getDataSource(apiService : ApiService,breedsLocalRepository: BreedsLocalRepository) : BreedsRemoteDataSource {
-        return BreedsRemoteDataSourceImpl(apiService,breedsLocalRepository)
+        return BreedsRemoteDataSourceImpl(apiService)
     }
 
     @Singleton

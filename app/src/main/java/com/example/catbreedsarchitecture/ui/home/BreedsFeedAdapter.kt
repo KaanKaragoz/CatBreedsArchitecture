@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.catbreedsarchitecture.R
 import com.example.catbreedsarchitecture.data.Breed
+import com.example.catbreedsarchitecture.data.Items
 import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
 import com.example.catbreedsarchitecture.databinding.BreedsItemsBinding
 
@@ -31,7 +32,7 @@ class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) 
     override fun onBindViewHolder(holder: BreedsFeedViewHolder, position: Int) {
         val item = getItem(position)
         holder.view.breed = item
-        Log.d("adapter",item.toString())
+
         if (item.IsCatliked == true) {
             holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
             holder.view.executePendingBindings()
@@ -41,15 +42,6 @@ class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) 
         }
         holder.view.btnLike.setOnClickListener {
             onFavouriteChanged(item.name, item.IsCatliked)
-/*
-            if (item.IsCatliked == true) {
-                holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
-                holder.view.executePendingBindings()
-            } else {
-                holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
-            }
-            */
-
             holder.view.executePendingBindings()
         }
 
@@ -57,7 +49,6 @@ class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) 
 
     class BreedsFeedDiffCallback : DiffUtil.ItemCallback<Breed>() {
         override fun areItemsTheSame(oldItem: Breed, newItem: Breed): Boolean {
-            Log.d("aaaaa","callback")
             return oldItem.name == newItem.name && oldItem.IsCatliked == newItem.IsCatliked
 
 
@@ -65,7 +56,6 @@ class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) 
         }
 
         override fun areContentsTheSame(oldItem: Breed, newItem: Breed): Boolean {
-            Log.d("aaaaa","are contents the same")
             return areItemsTheSame(oldItem, newItem)
         }
 

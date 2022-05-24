@@ -46,21 +46,10 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                // Bind the visibility of the progressBar to the state
-                // of isFetchingArticles.
                 viewModel.breeds.collect {
                     breedsAdapter.submitList(it.breedsItems) }
             }
         }
-
-
-    /*
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.breeds.collect{
-                Log.d("home",it.breedsItems.toString())
-                breedsAdapter.submitList(it.breedsItems)
-            }
-        } */
     }
 
     override fun onDestroyView() {
@@ -69,9 +58,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupOnClickListeners(){
-        binding.button.setOnClickListener {
-            viewModel.tryRoom()
-        }
+
     }
 
     private fun initializeAdapter() {
