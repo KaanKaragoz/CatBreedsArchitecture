@@ -10,6 +10,7 @@ import com.example.catbreedsarchitecture.data.Breed
 interface BreedsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addCat(cat: Breed)
+
     @Query("SELECT * FROM liked_cats_table ORDER BY catId")
     suspend fun readAllData(): List<Breed>
 

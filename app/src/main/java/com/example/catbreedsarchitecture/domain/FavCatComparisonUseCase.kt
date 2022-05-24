@@ -11,7 +11,7 @@ class FavCatComparisonUseCase @Inject constructor(
     private val breedsRepository: BreedsRepository,
     private val localRepository: BreedsLocalRepository) {
 
-       suspend fun combineData(): List<Breed> {
+       private suspend fun combineData(): List<Breed> {
         val localResponse : List<Breed> = localRepository.readAllData()
         val remoteResponse : List<Breed> = breedsRepository.getDefaultBreeds()
 
