@@ -34,7 +34,7 @@ class HomeViewModel @Inject constructor(
                 if (isFavourited == false){
                     localRepository.addCat(it)
                 }
-                else if (isFavourited == true){
+                else {
                     localRepository.deleteCat(id)
                 }
             }
