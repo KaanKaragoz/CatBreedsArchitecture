@@ -15,10 +15,10 @@ class FavCatComparisonUseCase @Inject constructor(
         val localResponse : List<Breed> = localRepository.readAllData()
         val remoteResponse : List<Breed> = breedsRepository.getDefaultBreeds()
 
-        remoteResponse.forEachIndexed { index, element ->
-            localResponse.forEachIndexed { index2, element2 ->
-                if (localResponse[index2].name.equals(remoteResponse[index].name)) {
-                    remoteResponse[index].IsCatliked = true
+        remoteResponse.forEachIndexed { i, k ->
+            localResponse.forEachIndexed { j, l ->
+                if (localResponse[j].name.equals(remoteResponse[i].name)) {
+                    remoteResponse[i].IsCatliked = true
                 }
             }
         }
