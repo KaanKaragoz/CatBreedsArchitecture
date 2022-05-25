@@ -47,9 +47,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             //******************
             //artık veriler lokaldeki verilerle karşılaştırılıp UI'a verilecek
-            // val breedsItems = repository.getDefaultBreeds()
+            // val breedsItems = repository.getDefaultBreeds()    <-----a
             //******************
-            val breedsItems = favCatComparisonUseCase()
+            val breedsItems = favCatComparisonUseCase() //        <-----a
             _breeds.update {
                 it.copy(breedsItems = breedsItems)
             }
