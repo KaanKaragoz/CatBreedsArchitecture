@@ -1,21 +1,14 @@
 package com.example.catbreedsarchitecture.ui.home
 
-import android.util.Log
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-
 import androidx.recyclerview.widget.RecyclerView
 import com.example.catbreedsarchitecture.R
 import com.example.catbreedsarchitecture.data.Breed
-import com.example.catbreedsarchitecture.data.Items
-import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
 import com.example.catbreedsarchitecture.databinding.BreedsItemsBinding
 
 class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) : ListAdapter<Breed, BreedsFeedAdapter.BreedsFeedViewHolder>(BreedsFeedDiffCallback())  {
@@ -35,21 +28,19 @@ class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) 
 
         if (item.IsCatliked == true) {
             holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
-
         }
         else {
             holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
-
         }
         holder.view.btnLike.setOnClickListener {
             onFavouriteChanged(item.name, item.IsCatliked)
-            //holder.view.executePendingBindings()
         }
-        holder.view.executePendingBindings()
 
+        holder.view.executePendingBindings()
     }
 
     class BreedsFeedDiffCallback : DiffUtil.ItemCallback<Breed>() {
+
         override fun areItemsTheSame(oldItem: Breed, newItem: Breed): Boolean {
             return oldItem.name == newItem.name && oldItem.IsCatliked == newItem.IsCatliked
         }
@@ -59,8 +50,5 @@ class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) 
         }
 
     }
-
-
-
 
 }

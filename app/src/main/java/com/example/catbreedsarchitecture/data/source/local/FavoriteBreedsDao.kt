@@ -2,12 +2,13 @@ package com.example.catbreedsarchitecture.data.source.local
 
 
 import androidx.room.*
-import com.example.catbreeds.model.TypeConverter
+import com.example.catbreedsarchitecture.util.TypeConverter
 import com.example.catbreedsarchitecture.data.Breed
 
 @Dao
 @TypeConverters(TypeConverter::class)
-interface BreedsDao {
+interface FavoriteBreedsDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addCat(cat: Breed)
 

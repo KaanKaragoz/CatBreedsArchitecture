@@ -2,21 +2,14 @@ package com.example.catbreedsarchitecture.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.catbreedsarchitecture.data.Breed
 import com.example.catbreedsarchitecture.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.FlowCollector
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -31,7 +24,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
-        binding.lifecycleOwner = this.viewLifecycleOwner // viewLifecycleOwner =? getViewLifecycleOwner
+        binding.lifecycleOwner = this.viewLifecycleOwner
         return binding.root
     }
 

@@ -1,4 +1,4 @@
-package com.example.catbreeds.model
+package com.example.catbreedsarchitecture.util
 
 import androidx.room.TypeConverter
 import com.example.catbreedsarchitecture.data.Items
@@ -8,7 +8,6 @@ class TypeConverter {
     @TypeConverter
     fun fromItems(bmp: Items): String {
         return bmp.url
-
     }
 
     @TypeConverter

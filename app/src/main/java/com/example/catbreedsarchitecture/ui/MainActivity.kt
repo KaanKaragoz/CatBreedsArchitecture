@@ -5,8 +5,7 @@ import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.catbreedsarchitecture.R
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
-import kotlinx.coroutines.delay
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

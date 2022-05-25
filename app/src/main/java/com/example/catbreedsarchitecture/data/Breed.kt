@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 import kotlinx.parcelize.IgnoredOnParcel
 
-@Parcelize
+@kotlinx.parcelize.Parcelize
 @Entity(tableName = "liked_cats_table")
 data class Breed(
     @ColumnInfo(name = "name")
@@ -48,7 +48,7 @@ data class Breed(
     var catId : Int = 0
 }
 
-@Parcelize
+@kotlinx.parcelize.Parcelize
 data class Items( val url : String) : Parcelable {
 
 

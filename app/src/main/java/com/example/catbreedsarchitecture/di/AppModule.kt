@@ -2,12 +2,12 @@ package com.example.catbreedsarchitecture.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.catbreedsarchitecture.data.source.local.BreedsDao
+import com.example.catbreedsarchitecture.data.source.local.FavoriteBreedsDao
 import com.example.catbreedsarchitecture.data.source.local.LikedCatsDatabase
 import com.example.catbreedsarchitecture.api.ApiService
-import com.example.catbreedsarchitecture.data.source.local.BreedsLocalDataSource
-import com.example.catbreedsarchitecture.data.source.local.BreedsLocalDataSourceImpl
-import com.example.catbreedsarchitecture.data.source.local.BreedsLocalRepository
+import com.example.catbreedsarchitecture.data.source.local.FavoriteBreedsLocalDataSource
+import com.example.catbreedsarchitecture.data.source.local.FavoriteBreedsLocalDataSourceImpl
+import com.example.catbreedsarchitecture.data.source.local.FavoriteBreedsRepository
 import com.example.catbreedsarchitecture.data.source.remote.BreedsRemoteDataSourceImpl
 import com.example.catbreedsarchitecture.data.source.remote.BreedsRemoteDataSource
 import dagger.Module
@@ -33,7 +33,7 @@ object AppModule {
     }
     @Singleton
     @Provides
-    fun getDataSource(apiService : ApiService,breedsLocalRepository: BreedsLocalRepository) : BreedsRemoteDataSource {
+    fun getDataSource(apiService : ApiService, favoriteBreedsRepository: FavoriteBreedsRepository) : BreedsRemoteDataSource {
         return BreedsRemoteDataSourceImpl(apiService)
     }
 
@@ -50,8 +50,8 @@ object AppModule {
     /*ROOM DI*/
     @Singleton
     @Provides
-    fun getLocalDataSource(breedsDao : BreedsDao) : BreedsLocalDataSource {
-        return BreedsLocalDataSourceImpl(breedsDao)
+    fun getLocalDataSource(breedsDao : FavoriteBreedsDao) : FavoriteBreedsLocalDataSource {
+        return FavoriteBreedsLocalDataSourceImpl(breedsDao)
     }
 
     @Provides
@@ -65,7 +65,7 @@ object AppModule {
         app,
         LikedCatsDatabase::class.java,
         "breeds_database"
-    ).build() // The reason we can construct a database for the repo
+    ).build()
 
 
 
