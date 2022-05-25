@@ -8,7 +8,7 @@ import com.example.catbreedsarchitecture.data.Breed
 @Dao
 @TypeConverters(TypeConverter::class)
 interface FavoriteBreedsDao {
-//TODO
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addCat(cat: Breed)
 
