@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         initializeAdapter()
-        setupOnClickListeners()
         viewModel.handleBreeds()
 
         lifecycleScope.launch {
@@ -48,10 +47,6 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun setupOnClickListeners(){
-
     }
 
     private fun initializeAdapter() {

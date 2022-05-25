@@ -42,7 +42,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun selectedCat(catList: List<Breed>, callId: String) : Breed?{
+    private fun selectedCat(catList: List<Breed>, callId: String) : Breed?{
         var i = 0
         while (i<catList.size){
             if (catList[i].name.equals(callId)){
