@@ -35,24 +35,23 @@ class BreedsFeedAdapter( val onFavouriteChanged : (String?, Boolean?) -> Unit ) 
 
         if (item.IsCatliked == true) {
             holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_24)
-            holder.view.executePendingBindings()
+
         }
         else {
             holder.view.btnLike.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
+
         }
         holder.view.btnLike.setOnClickListener {
             onFavouriteChanged(item.name, item.IsCatliked)
-            holder.view.executePendingBindings()
+            //holder.view.executePendingBindings()
         }
+        holder.view.executePendingBindings()
 
     }
 
     class BreedsFeedDiffCallback : DiffUtil.ItemCallback<Breed>() {
         override fun areItemsTheSame(oldItem: Breed, newItem: Breed): Boolean {
             return oldItem.name == newItem.name && oldItem.IsCatliked == newItem.IsCatliked
-
-
-
         }
 
         override fun areContentsTheSame(oldItem: Breed, newItem: Breed): Boolean {

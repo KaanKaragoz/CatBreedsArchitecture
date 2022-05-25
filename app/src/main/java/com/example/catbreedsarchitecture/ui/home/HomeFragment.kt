@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.breeds.collect {
-                    breedsAdapter.submitList(it.breedsItems) }
+                    breedsAdapter.submitList(it.breedsItems)}
             }
         }
     }

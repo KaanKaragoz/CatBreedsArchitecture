@@ -22,6 +22,12 @@ class FavCatComparisonUseCase @Inject constructor(
                 }
             }
         }
+           remoteResponse.forEachIndexed { i,j ->
+               if(remoteResponse[i].IsCatliked == null) {
+                   remoteResponse[i].IsCatliked = false
+               }
+           }
+
         return remoteResponse
     }
 

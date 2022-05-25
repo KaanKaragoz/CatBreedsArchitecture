@@ -27,15 +27,18 @@ class HomeViewModel @Inject constructor(
     private val favCatComparisonUseCase: FavCatComparisonUseCase) : ViewModel() {
 
     private val _breeds = MutableStateFlow(HomeUiState(onFavouriteChanged = {id,isFavourited ->
-        Log.d("home",id+" - "+isFavourited.toString())
+        Log.d("callback",id+" - "+isFavourited.toString())
 
         viewModelScope.launch {
-            selectedCat(breeds.value.breedsItems,id!!)?.let {
-                localRepository.addCat(it)
+            selectedCat(breeds.value.breedsItems, id!!)?.let {
+                if (isFavourited == false){
+                    localRepository.addCat(it)
+                }
+                else if (isFavourited == true){
+                    localRepository.deleteCat(id)
+                }
             }
-            Log.d("room",localRepository.readAllData().toString())
             handleBreeds()
-
         }
     }))
     val breeds : StateFlow<HomeUiState> = _breeds.asStateFlow()
