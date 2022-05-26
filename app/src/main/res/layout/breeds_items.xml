@@ -7,34 +7,33 @@
             name="breed"
             type="com.example.catbreedsarchitecture.data.Breed" />
 
-        <variable
-            name="listener"
-            type="com.example.catbreedsarchitecture.util.BreedClickListener" />
-
-
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
         >
 
         <LinearLayout
+            android:id="@+id/linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
-
+            android:clickable="true"
+            android:focusable="true"
+            android:navigationToFragment="@{breed}"
             >
+
 
             <TextView
                 android:id="@+id/breedsNameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                android:text="@{breed.name}"/>
+                android:text="@{breed.name}"
+                />
 
             <ImageView
                 android:id="@+id/catImg"
@@ -43,22 +42,27 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:downloadUrl="@{breed.image.url}"
-                android:navigationToFragment="@{breed}"
+                android:clickable="false"
+                android:focusable="false"
 
                 />
 
             <TextView
                 android:id="@+id/catName"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@{breed.name}"
                 android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:layout_weight="1"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+
+
+                />
 
             <ImageView
                 android:id="@+id/btnLike"

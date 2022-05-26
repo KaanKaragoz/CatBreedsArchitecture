@@ -3,6 +3,7 @@ package com.example.catbreedsarchitecture.util
 import android.content.Context
 import android.util.Log
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.databinding.BindingAdapter
 import androidx.navigation.Navigation
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -36,12 +37,11 @@ fun downloadImage(view:ImageView,url:String?){
 }
 
 @BindingAdapter("android:navigationToFragment")
-fun navigationToFragment(view: ImageView, breed: Breed) {
+fun navigationToFragment(view: LinearLayout, breed: Breed) {
     view.setOnClickListener {
          val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(breed)
         Navigation.findNavController(view).navigate(action)
     }
-
 
 }
 
