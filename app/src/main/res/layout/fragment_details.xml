@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="breeds"
+            type="com.example.catbreedsarchitecture.data.Breed" />
+
+    </data>
+
+    <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.details.DetailsFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.fragments.CatDetails"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/txtCatName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{breeds.name}"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="start"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="8dp" />
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@{breeds.isCatliked ? @drawable/ic_baseline_favorite_24 : @drawable/ic_baseline_favorite_border_24 }" />
+
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/catBigImg"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@color/black"
+                android:layout_gravity="center_horizontal"
+                android:downloadUrl="@{breeds.image.url}"/>
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{breeds.description}"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/origin"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/txtOrigin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:text="@{breeds.origin}"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/life_span"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/txtLifeSpan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:text="@{breeds.lifeSpan}"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dog_friendly"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/txtDogFriendly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:text="@{breeds.dogFriendly.toString()}"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wikipedia_url"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/txtWikiUrl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:text="@{breeds.wikipediaUrl}"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+    
+</layout>
+

@@ -7,11 +7,17 @@
             name="breed"
             type="com.example.catbreedsarchitecture.data.Breed" />
 
+        <variable
+            name="listener"
+            type="com.example.catbreedsarchitecture.util.BreedClickListener" />
+
+
     </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+
         >
 
         <LinearLayout
@@ -20,7 +26,15 @@
             android:background="@color/white"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
+
             >
+
+            <TextView
+                android:id="@+id/breedsNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="@{breed.name}"/>
 
             <ImageView
                 android:id="@+id/catImg"
@@ -28,7 +42,10 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
-                android:downloadUrl="@{breed.image.url}"/>
+                android:downloadUrl="@{breed.image.url}"
+                android:navigationToFragment="@{breed}"
+
+                />
 
             <TextView
                 android:id="@+id/catName"
